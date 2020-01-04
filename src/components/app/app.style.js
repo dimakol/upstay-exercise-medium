@@ -1,13 +1,21 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-	display: flex;
+	display: block;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	height: 100vh;
 `;
 
-export const Welcome = styled.h1`
-	margin-right: 5px;
+export const PageTitle = styled.h1`
+	text-decoration: underline;
+	text-align: center;
+	@media (max-width: 575px) {
+		text-align: unset;
+		margin-left: 15px;
+	}
+`;
+
+export const ErrorMsg = styled.div`
+	text-align: center;
 `;

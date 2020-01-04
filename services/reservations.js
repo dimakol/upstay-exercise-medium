@@ -5,6 +5,9 @@ const emitter = new EventEmitter();
 const NEW_RESERVATION_EVENT = 'newReservation';
 
 let timeoutId;
+/**
+ * Generate new reservation
+ */
 const generate = () => {
 	const reservation = {
 		uuid: faker.random.uuid(),
@@ -26,7 +29,12 @@ const generate = () => {
 };
 
 let running = false;
+/**
+ * Start the service that generates new reservations
+ * @param {*} newReservationCallback
+ */
 export const start = newReservationCallback => {
+	console.log('Reservation service has been started');
 	if (running) {
 		return;
 	}
@@ -36,8 +44,12 @@ export const start = newReservationCallback => {
 	generate();
 };
 
+/**
+ * Stop the service that generates new reservations
+ */
 export const stop = () => {
 	clearTimeout(timeoutId);
 	running = false;
 	emitter.removeAllListeners(NEW_RESERVATION_EVENT);
+	console.log('Reservation service has been stopped');
 };
